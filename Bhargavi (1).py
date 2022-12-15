@@ -164,3 +164,52 @@ mat_plot.ylabel('Comparison ')
 mat_plot.title('Rural population growth (annual %)') 
 
 mat_plot.show() # showing graph 
+
+# #Plotting figure for Agricultural land (% of land area)
+
+# In[10]:
+
+
+dataset_time6= df_ag1[df_ag1['Indicator Name']=='Agricultural land (% of land area)']  
+dataset_time7=dataset_time6.set_index("Country Name") 
+dataset_time8=dataset_time7.drop(['Country Code', 'Indicator Name', 'Indicator Code', 'Unnamed: 66'],axis=1)
+dataset_time9=dataset_time8.T
+dataset_time10 = dataset_time9.reset_index()
+
+
+# In[11]:
+
+
+dataset_time11=dataset_time10.pivot_table(index=['index'], values=['Chile', 'China', "Cote d'Ivoire", 'Cameroon', 'Congo, Dem. Rep.',
+       'Congo, Rep.', 'Colombia', 'Comoros', 'Cabo Verde', 'Costa Rica',])  
+mat_plot.figure(figsize = (18,8)) # define figure size 
+mat_plot.plot(dataset_time11.head(20),'-.')
+mat_plot.xticks(rotation=90) 
+mat_plot.legend(['Chile', 'China', "Cote d'Ivoire", 'Cameroon', 'Congo, Dem. Rep.',
+       'Congo, Rep.', 'Colombia', 'Comoros', 'Cabo Verde', 'Costa Rica',],bbox_to_anchor =(1.0, 1.1), ncol = 1) 
+mat_plot.xlabel('Year')
+
+mat_plot.ylabel('Comparison ') 
+
+mat_plot.title('Agricultural land (% of land area)') 
+# define title name 
+mat_plot.show() # showing graph 
+
+
+# #CORRELATION MATRIX 
+
+# #Plotting figure for China
+
+# In[12]:
+
+
+#creating function for country
+def function(Country):
+  df_matrix = df_ag1[df_ag1['Country Name']==f'{Country}'] 
+  df_matrix = df_matrix.drop(['Country Name', 'Country Code', 'Indicator Code', 'Unnamed: 66'],axis=1) 
+  df_matrix = df_matrix.T
+  df_matrix1=df_matrix.iloc[0] 
+  df_matrix=df_matrix[1:] 
+  df_matrix.columns=df_matrix1
+  df_matrix = df_matrix.reset_index(drop=True)
+  return df_matrix
