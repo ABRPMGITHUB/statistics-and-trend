@@ -213,3 +213,30 @@ def function(Country):
   df_matrix.columns=df_matrix1
   df_matrix = df_matrix.reset_index(drop=True)
   return df_matrix
+# In[13]:
+
+
+data_cty=function('China')
+# fatch country name 
+data_cty.to_csv('data_china.csv')
+# create new data set file 
+df3=pd.read_csv('/content/data_china.csv') 
+# read dataset for Nepal country 
+data1=df3.drop(['Unnamed: 0'],axis=1) 
+# drop unnamed columns 
+df_drop = data1.fillna(0)
+
+
+# In[14]:
+
+
+#define labels 
+df_matrix1 = df_drop[['Agricultural machinery, tractors per 100 sq. km of arable land', 'Rural land area (sq. km)', 'Land area (sq. km)', 'Average precipitation in depth (mm per year)', 'Forest area (% of land area)', 'Forest area (sq. km)', 'Rural land area where elevation is below 5 meters (sq. km)', 'Permanent cropland (% of land area)', 'Land under cereal production (hectares)', 'Arable land (% of land area)', 'Agricultural land (% of land area)', 'Agricultural land (sq. km)', 'Fertilizer consumption (kilograms per hectare of arable land)']]  
+
+
+# In[15]:
+
+
+#visualizaing dataset for  correlation 
+df_corr1=df_matrix1.corr() 
+df_corr1.head()
