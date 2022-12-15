@@ -240,3 +240,37 @@ df_matrix1 = df_drop[['Agricultural machinery, tractors per 100 sq. km of arable
 #visualizaing dataset for  correlation 
 df_corr1=df_matrix1.corr() 
 df_corr1.head()
+# In[16]:
+
+
+arr=df_corr1.to_numpy()
+labs=df_matrix1.columns
+fig, Axis = mat_plot.subplots(figsize=(20,12)) 
+im = Axis.imshow(df_corr1,cmap="YlGnBu_r")
+
+Axis.set_xticks(np.arange(len(labs)))
+Axis.set_yticks(np.arange(len(labs)))
+
+Axis.set_xticklabels(labs)
+Axis.set_yticklabels(labs)
+
+mat_plot.setp(Axis.get_xticklabels(), rotation=120, ha="right",rotation_mode="anchor") 
+
+for i in range(len(labs)):
+    for j in range(len(labs)):
+        text = Axis.text(j, i, round(arr[i, j],2), ha="center", va="center", color="black") 
+
+Axis.set_title("China") 
+mat_plot.show() 
+
+
+# #Plotting figure for Chile
+
+# In[17]:
+
+
+data_cty1=function('Chile') # fatch country name 
+data_cty1.to_csv('data_Chile.csv')# create new data set file 
+data_cty2=pd.read_csv('/content/data_Chile.csv')
+data_cty3=data_cty2.drop(['Unnamed: 0'],axis=1) 
+df_drop = data_cty3.fillna(0)
