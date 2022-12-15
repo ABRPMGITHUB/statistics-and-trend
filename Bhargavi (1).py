@@ -43,7 +43,61 @@ df_ag1,df_ag2=read_df(Data_filename)
 df_ag1.head(8) # visualizaing dataset 
 
 
+# #BAR GRAPH 
+
+# #Plotting  figure for Rural population (% of total population)
+
+# In[5]:
+
+
+# set fount size (18)
+mat_plot.rcParams.update({'font.size': 18}) 
+df_bar1= df_ag1[df_ag1['Indicator Name'] == 'Rural population (% of total population)']
+df_bar=df_bar1.pivot_table(index=['Country Name'], values=['1962', '1972', '1982', '1992', '2002']) 
+mat_plot.rcParams['figure.figsize']=(21,7) 
+df_bar1= df_bar.head(25)
+df_bar1.plot.bar(color=['DarkOrange', 'Chartreuse', 'green',  'Blue', '#ff8080'])
+mat_plot.xlabel('Country Name')
+
+mat_plot.ylabel('Comparision')
+
+mat_plot.title('Rural population (% of total population)') 
+mat_plot.show();
+
+
+# Rural data was gathered from a number of nations between 1962 and 2002, and a bar graph was created to represent this information. According to the chart, investigation has shown that the population distribution is most concentrated in Bangladesh, and that this concentration decreases as the year count rises.
+# Another country has its people concentrated in the fewest feasible places.
+
+# #Plotting figure for Arable land (% of land area)
+
 # In[4]:
 
 
 df_ag2.head(8)#visualizaing dataset 
+
+# #BAR GRAPH 
+
+# #Plotting  figure for Rural population (% of total population)
+
+# In[5]:
+
+
+# set fount size (18)
+mat_plot.rcParams.update({'font.size': 18}) 
+df_bar1= df_ag1[df_ag1['Indicator Name'] == 'Rural population (% of total population)']
+df_bar=df_bar1.pivot_table(index=['Country Name'], values=['1962', '1972', '1982', '1992', '2002']) 
+mat_plot.rcParams['figure.figsize']=(21,7) 
+df_bar1= df_bar.head(25)
+df_bar1.plot.bar(color=['DarkOrange', 'Chartreuse', 'green',  'Blue', '#ff8080'])
+mat_plot.xlabel('Country Name')
+
+mat_plot.ylabel('Comparision')
+
+mat_plot.title('Rural population (% of total population)') 
+mat_plot.show();
+
+
+# Rural data was gathered from a number of nations between 1962 and 2002, and a bar graph was created to represent this information. According to the chart, investigation has shown that the population distribution is most concentrated in Bangladesh, and that this concentration decreases as the year count rises.
+# Another country has its people concentrated in the fewest feasible places.
+
+# #Plotting figure for Arable land (% of land area)
