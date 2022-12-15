@@ -101,3 +101,28 @@ mat_plot.show();
 # Another country has its people concentrated in the fewest feasible places.
 
 # #Plotting figure for Arable land (% of land area)
+# In[6]:
+
+
+df_bar2= df_ag1[df_ag1['Indicator Name'] == 'Arable land (% of land area)']
+df_bar3=df_bar2.pivot_table(index=['Country Name'], values=['1962', '1972', '1982', '1992', '2002']) 
+mat_plot.rcParams['figure.figsize']=(21,7) 
+df_bar1= df_bar3.head(25)
+df_bar1.plot.bar(color=['GoldenRod', 'red', 'green', 'Blue', 'DeepPink'])
+mat_plot.xlabel('Country Name')
+mat_plot.ylabel('Comparision')
+mat_plot.title('Arable land (% of land area)') 
+mat_plot.show();
+
+
+# A bar graph shows arable land statistics from several nations between 1962 and 2002. These years' data were collected. Analyzing the figure shows that Bangladesh had the most people in 1972.
+# The Bahamas, Belarus, Azerbaijan, and others have small populations, and data for certain years is missing.
+
+# # Showing  correlation 
+
+# In[7]:
+
+
+dataset_corr = df_ag1[df_ag1['Indicator Name']=='Rural population']  
+dataset_corr_1 = dataset_corr.pivot_table(index=['Country Name'], values = ['2001', '2006', '2020','2021'])  
+dataset_corr_1.head(15)
