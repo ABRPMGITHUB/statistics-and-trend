@@ -126,3 +126,41 @@ mat_plot.show();
 dataset_corr = df_ag1[df_ag1['Indicator Name']=='Rural population']  
 dataset_corr_1 = dataset_corr.pivot_table(index=['Country Name'], values = ['2001', '2006', '2020','2021'])  
 dataset_corr_1.head(15)
+# #Plotting figure for Arable land (% of land area)
+
+  
+
+
+# The table below displays rural population by nation from 2001 to 2021. Year-over-year rural population growth has been used. Afganistan's population grew as Argentina's shrank.
+
+# #TIME SERIES ANALYSIS
+
+# #Plotting figure for Rural population growth (annual %
+
+# In[8]:
+
+
+dataset_time= df_ag1[df_ag1['Indicator Name']=='Rural population growth (annual %)']  
+dataset_time1=dataset_time.set_index("Country Name") 
+dataset_time2=dataset_time1.drop(['Country Code', 'Indicator Name', 'Indicator Code', 'Unnamed: 66'],axis=1)
+dataset_time3=dataset_time2.T
+dataset_time4 = dataset_time3.reset_index()
+
+
+# In[9]:
+
+
+dataset_time5=dataset_time4.pivot_table(index=['index'], values=['Chile', 'China', "Cote d'Ivoire", 'Cameroon', 'Congo, Dem. Rep.',
+       'Congo, Rep.', 'Colombia', 'Comoros', 'Cabo Verde', 'Costa Rica',])  
+mat_plot.figure(figsize = (18,8)) # define figure size 
+mat_plot.plot(dataset_time5.head(20),'-.')
+mat_plot.xticks(rotation=90) 
+mat_plot.legend(['Chile', 'China', "Cote d'Ivoire", 'Cameroon', 'Congo, Dem. Rep.',
+       'Congo, Rep.', 'Colombia', 'Comoros', 'Cabo Verde', 'Costa Rica',],bbox_to_anchor =(1.0, 1.1), ncol = 1) 
+mat_plot.xlabel('Year')
+
+mat_plot.ylabel('Comparison ') 
+
+mat_plot.title('Rural population growth (annual %)') 
+
+mat_plot.show() # showing graph 
